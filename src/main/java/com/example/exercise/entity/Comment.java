@@ -26,16 +26,21 @@ public class Comment extends TimeStamped{
 
   @JoinColumn
   @ManyToOne
-  private Post post;
+  private Talent talent;
 
+  @JoinColumn
+  @ManyToOne
+  private Gathering gathering;
 
   @Column(nullable = false)
   private String content;
 
-  public Comment(Long id, User user, Post post, String content) {
+  public Comment(Long id, User user, Talent talent, String content) {
     Id = id;
     this.user = user;
-    this.post = post;
+    this.talent = talent;
     this.content = content;
   }
+
+
 }

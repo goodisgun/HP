@@ -40,7 +40,10 @@ public class User {
   private UserRoleEnum userRole;
 
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-  private final List<Post> posts = new ArrayList<>();
+  private final List<Talent> talents = new ArrayList<>();
+
+  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+  private final List<Gathering> gatherings = new ArrayList<>();
 
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
   private final List <Comment> comments = new ArrayList<>();

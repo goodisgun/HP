@@ -1,10 +1,8 @@
-package com.example.exercise.service.post;
+package com.example.exercise.service.talent;
 
-import com.example.exercise.entity.User;
+public interface TalentService {
 
-public interface PostService {
-
-  //createPost (게시글 생성)
+  //postTalnet (게시글 생성)
 //  PostResponseDto createPost(User user, PostRequestDto postRequestDto);
 
   //getPost (게시글 선택조회)

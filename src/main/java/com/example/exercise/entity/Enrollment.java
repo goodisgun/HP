@@ -25,7 +25,7 @@ public class Enrollment{
 
   @ManyToOne
   @JoinColumn
-  private Post post;
+  private Talent post;
 
   @Column(nullable = false)
   private String userName;
@@ -33,7 +33,7 @@ public class Enrollment{
   @Column(nullable = false)
   private String email;
 
-  public Enrollment(Long id, User user, Post post, String userName, String email) {
+  public Enrollment(Long id, User user, Talent post, String userName, String email) {
     Id = id;
     this.user = user;
     this.post = post;

@@ -1,10 +1,10 @@
-package com.example.exercise.service.post;
+package com.example.exercise.service.talent;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class PostServiceImpl {
+public class TalentServiceImpl {
 
 }

@@ -1,10 +1,5 @@
 package com.example.exercise.service.enrollment;
 
-import com.example.exercise.entity.Enrollment;
-import com.example.exercise.entity.Post;
-import com.example.exercise.entity.User;
-import java.util.List;
-
 public interface EnrollmentService {
 
   //참가 신청
