@@ -23,6 +23,6 @@ public interface GatheringService {
     GatheringResponseDto updateGathering(@PathVariable Long gatheringId, User user, GatheringUpdateRequestDto updateRequestDto);
 
     // 게시글 삭제
-    void deleteGathering(Long gatheringId, User user);
+    String deleteGathering(Long gatheringId, User user);
 
 }

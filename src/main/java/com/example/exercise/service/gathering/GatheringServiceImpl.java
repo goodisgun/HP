@@ -68,7 +68,7 @@ public class GatheringServiceImpl implements GatheringService{
 
     //모임 게시글 삭제
     @Override
-    public void deleteGathering(Long gatheringId, User user) {
+    public String deleteGathering(Long gatheringId, User user) {
         Gathering gathering = gatheringRepository.findById(gatheringId).orElseThrow(
                 ()-> new IllegalArgumentException("삭제할 모임이 존재하지 않습니다.")
         );
@@ -77,7 +77,7 @@ public class GatheringServiceImpl implements GatheringService{
         }else{
             gatheringRepository.delete(gathering);
         }
-
+        return "게시글을 삭제하였습니다.";
 
     }
 }
