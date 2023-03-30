@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @Entity
 @NoArgsConstructor
-public class Comment extends TimeStamped{
+public class TalentComment extends TimeStamped{
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,19 +28,9 @@ public class Comment extends TimeStamped{
   @ManyToOne
   private Talent talent;
 
-  @JoinColumn
-  @ManyToOne
-  private Gathering gathering;
-
   @Column(nullable = false)
   private String content;
 
-  public Comment(Long id, User user, Talent talent, String content) {
-    Id = id;
-    this.user = user;
-    this.talent = talent;
-    this.content = content;
-  }
 
 
 }
