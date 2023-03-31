@@ -1,5 +1,7 @@
 package com.example.exercise.entity;
 
+import com.example.exercise.dto.talent.TalentRequestDto;
+import com.example.exercise.dto.talent.TalentUpdateRequestDto;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,6 +13,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -37,15 +40,29 @@ public class Talent extends TimeStamped{
   private String image;
 
   @OneToMany(mappedBy = "talent", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<Comment> comments = new ArrayList<>();
+  private List<TalentComment> comments = new ArrayList<>();
 
-  public Talent(Long id, User user, String title, String content, String image,
-      List<Comment> comments) {
-    this.id = id;
+
+  @Builder
+  public Talent (TalentRequestDto requestDto, User user){
+    this.title = requestDto.getTitle();
+    this.content = requestDto.getContent();
+    this.image = requestDto.getImage();
     this.user = user;
-    this.title = title;
-    this.content = content;
-    this.image = image;
-    this.comments = comments;
   }
+
+  public void updateTalent(TalentUpdateRequestDto requestDto){
+    if (requestDto.getTitle() != null && !requestDto.getTitle().isEmpty()) {
+      this.title = requestDto.getTitle();
+    }
+    if (requestDto.getContent() != null && !requestDto.getContent().isEmpty()) {
+      this.content = requestDto.getContent();
+    }
+    if (requestDto.getImage() != null && !requestDto.getImage().isEmpty()) {
+      this.image = requestDto.getImage();
+    }
+  }
+
+
+
 }

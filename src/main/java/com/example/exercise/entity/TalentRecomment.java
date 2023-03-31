@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @Entity
 @NoArgsConstructor
-public class Recomment extends TimeStamped{
+public class TalentRecomment extends TimeStamped{
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +22,7 @@ public class Recomment extends TimeStamped{
 
   @JoinColumn
   @ManyToOne
-  private Comment comment;
+  private TalentComment talentComment;
 
   @JoinColumn
   @ManyToOne
@@ -31,9 +31,9 @@ public class Recomment extends TimeStamped{
   @Column(nullable = false)
   private String content;
 
-  public Recomment(Long id, Comment comment, User user, String content) {
+  public TalentRecomment(Long id, TalentComment comment, User user, String content) {
     Id = id;
-    this.comment = comment;
+    this.talentComment = comment;
     this.user = user;
     this.content = content;
   }

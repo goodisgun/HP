@@ -36,16 +36,5 @@ public class Gathering extends TimeStamped {
   @Column
   private String image;
 
-  @OneToMany(mappedBy = "gathering", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<Comment> comments = new ArrayList<>();
 
-  public Gathering(Long id, User user, String title, String content, String image,
-      List<Comment> comments) {
-    this.id = id;
-    this.user = user;
-    this.title = title;
-    this.content = content;
-    this.image = image;
-    this.comments = comments;
-  }
 }
