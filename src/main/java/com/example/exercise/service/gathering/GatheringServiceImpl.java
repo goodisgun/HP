@@ -45,9 +45,7 @@ public class GatheringServiceImpl implements GatheringService{
     @Override
     @Transactional(readOnly = true)
     public GatheringResponseDto getGathering(Long gatheringId) {
-        Gathering gathering = gatheringRepository.findById(gatheringId).orElseThrow(
-                ()-> new IllegalArgumentException("해당 모임이 존재하지 않습니다.")
-        );
+        Gathering gathering = findGathering(gatheringId);
         GatheringResponseDto responseDto = new GatheringResponseDto(gathering);
         return responseDto;
     }
@@ -55,9 +53,7 @@ public class GatheringServiceImpl implements GatheringService{
     //모임 게시글 수정
     @Override
     public GatheringResponseDto updateGathering(Long gatheringId, User user, GatheringUpdateRequestDto updateRequestDto) {
-        Gathering gathering = gatheringRepository.findById(gatheringId).orElseThrow(
-                ()-> new IllegalArgumentException("수정할 모임이 존재하지 않습니다.")
-        );
+        Gathering gathering = findGathering(gatheringId);
         if(!gathering.getUser().equals(user)){
             throw new IllegalArgumentException("수정할 권한이 없습니다.");
         }else{
@@ -69,16 +65,23 @@ public class GatheringServiceImpl implements GatheringService{
     //모임 게시글 삭제
     @Override
     public String deleteGathering(Long gatheringId, User user) {
-        Gathering gathering = gatheringRepository.findById(gatheringId).orElseThrow(
-                ()-> new IllegalArgumentException("삭제할 모임이 존재하지 않습니다.")
-        );
+        Gathering gathering = findGathering(gatheringId);
         if(!gathering.getUser().equals(user)){
             throw new IllegalArgumentException("삭제할 권한이 없습니다.");
         }else{
             gatheringRepository.delete(gathering);
         }
-        return "게시글을 삭제하였습니다.";
+        return "success";
+    }
 
+    // 중복 코드
+    private Gathering findGathering(Long gatheringId){
+        Gathering gathering = gatheringRepository.findById(gatheringId).orElseThrow(
+                ()-> new IllegalArgumentException("해당 모임이 존재하지 않습니다.")
+        );
+        return gathering;
     }
 }
+
+
 

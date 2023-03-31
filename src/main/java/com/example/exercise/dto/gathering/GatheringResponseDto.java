@@ -8,7 +8,7 @@ import lombok.Getter;
 @Builder
 public class GatheringResponseDto {
 
-    private Long gatheringId;
+    private Long Id;
     private String nickname;
     private String title;
     private String image;
