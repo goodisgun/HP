@@ -46,10 +46,10 @@ public class User {
   private final List<Gathering> gatherings = new ArrayList<>();
 
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-  private final List <Comment> comments = new ArrayList<>();
+  private final List <TalentComment> comments = new ArrayList<>();
 
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-  private final List<Recomment> reComments = new ArrayList<>();
+  private final List<TalentRecomment> reComments = new ArrayList<>();
 
   public User(Long id, String username, String password, String nickname, String email,
       UserRoleEnum userRole) {
