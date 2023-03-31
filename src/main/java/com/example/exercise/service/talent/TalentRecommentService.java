@@ -1,8 +1,6 @@
-package com.example.exercise.service.recomment;
+package com.example.exercise.service.talent;
 
-import com.example.exercise.entity.User;
-
-public interface RecommentService {
+public interface TalentRecommentService {
 
   // reComment(대댓글 작성)
 //  String reComment(Long commentId, User user, ReCommentRequestDto reCommentRequestDto);
