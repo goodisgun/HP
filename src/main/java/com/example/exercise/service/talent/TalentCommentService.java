@@ -1,8 +1,6 @@
-package com.example.exercise.service.comment;
+package com.example.exercise.service.talent;
 
-import com.example.exercise.entity.User;
-
-public interface CommentService {
+public interface TalentCommentService {
 
   // Comment(댓글생성)
   //  String Comment(Long postId, User user, CommentRequestDto, commentRequestDto);
