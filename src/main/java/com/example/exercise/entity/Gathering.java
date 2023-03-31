@@ -54,5 +54,4 @@ public class Gathering extends TimeStamped {
     this.image = updateRequestDto.getImage();
 //    this.gatheringTime = updateRequestDto.getGatheringTime;
     }
-
 }
