@@ -1,13 +1,17 @@
 package com.example.exercise.service.talent;
 
+import com.example.exercise.dto.talent.TalentCommentRequestDto;
+import com.example.exercise.entity.User;
+import org.springframework.http.ResponseEntity;
+
 public interface TalentCommentService {
 
-  // Comment(댓글생성)
-  //  String Comment(Long postId, User user, CommentRequestDto, commentRequestDto);
+  // createTalentComment(댓글생성)
+    ResponseEntity<Void> createTalentComment(Long talentId, User user, TalentCommentRequestDto talentCommentRequestDto);
 
-  // updateComment(댓글수정)
-//  String updateComment(Long commentId, User user, CommentRequestDto, commentRequestDto);
+  // updateTalentComment(댓글수정)
+  ResponseEntity<Void> updateTalentComment(Long talentCommentId, User user, TalentCommentRequestDto talentCommentRequestDto);
 
-  // deleteComment(댓글삭제)
-//  String deleteComment(Long commentId, User user);
+  // deleteTalentComment(댓글삭제)
+  void deleteComment(Long talentCommentId, User user);
 }
