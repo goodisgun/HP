@@ -12,13 +12,9 @@ public class AllGatheringResponseDto {
     private String title;
     private String gatheringTime;
     private int memberNum;
-    private int memberLen;
 
     public AllGatheringResponseDto(Gathering gathering) {
         this.nickname = gathering.getUser().getNickname();
         this.title = gathering.getTitle();
-//        this.gatheringTime = gathering.getGatheringTime;
-//        this.memberNum = gathering.getMemberNum;
-//        this.memberLen = gathering.getMemberLen;
     }
 }

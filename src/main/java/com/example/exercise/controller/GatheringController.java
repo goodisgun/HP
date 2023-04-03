@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/gathering/posts")
+@RequestMapping("/gathering")
 public class GatheringController {
 
     private final GatheringServiceImpl gatheringService;
@@ -28,15 +28,15 @@ public class GatheringController {
     }
 
     //모임 게시글 수정
-    @PatchMapping("/{postId}")
+    @PatchMapping("/{gatheringId}")
     public ResponseEntity<GatheringResponseDto> updateGathering(@PathVariable Long gatheringId, User user, @RequestBody GatheringUpdateRequestDto updateRequestDto){
         return ResponseEntity.status(HttpStatus.OK).body(gatheringService.updateGathering(gatheringId, user,updateRequestDto));
     }
 
     //모임 게시글 삭제
-    @DeleteMapping("/{postId}")
-    public ResponseEntity<String> deleteGathering(@PathVariable Long gatheringId, User user){
-        return ResponseEntity.status(HttpStatus.OK).body(gatheringService.deleteGathering(gatheringId,user));
+    @DeleteMapping("/{gatheringId}")
+    public void deleteGathering(@PathVariable Long gatheringId, User user){
+       gatheringService.deleteGathering(gatheringId,user);
     }
 
     //모임 게시글 전체 조회
@@ -45,7 +45,7 @@ public class GatheringController {
         return ResponseEntity.status(HttpStatus.OK).body(gatheringService.getAllGathering());
     }
     //모임 게시글 상세 조회
-    @GetMapping("/{postId}")
+    @GetMapping("/{gatheringId}")
     public ResponseEntity<GatheringResponseDto> getGathering(@PathVariable Long gatheringId){
         return ResponseEntity.status(HttpStatus.OK).body(gatheringService.getGathering(gatheringId));
     }
