@@ -57,7 +57,7 @@ public class TalentServiceImpl implements TalentService {
 
   // 게시글 수정
   @Override
-  public TalentUpdateResponseDto updatePost(Long talentId, TalentUpdateRequestDto requestDto,
+  public TalentUpdateResponseDto updateTalent(Long talentId, TalentUpdateRequestDto requestDto,
       User user) {
     Talent talent = _findTalent(talentId);
 
