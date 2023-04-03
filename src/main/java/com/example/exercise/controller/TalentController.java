@@ -25,7 +25,7 @@ public class TalentController {
   private final TalentService talentService;
 
   // 게시물 작성
-  @PostMapping("")
+  @PostMapping
   public ResponseEntity<String> createTalents(TalentRequestDto talentRequestDto, User user){
     String talents = talentService.createTalent(talentRequestDto, user);
     return ResponseEntity.status(HttpStatus.CREATED).body(talents);
@@ -39,7 +39,7 @@ public class TalentController {
   }
 
   //게시물 전체조회
-  @GetMapping("")
+  @GetMapping
   public ResponseEntity<List<AllTalentResponseDto>> getAllTalent(){
     return ResponseEntity.status(HttpStatus.OK).body(talentService.getAllTalent());
   }
@@ -53,8 +53,7 @@ public class TalentController {
 
   //게시물 삭제
   @DeleteMapping("/{talentsId}")
-  public ResponseEntity<String> deleteTalent(Long id, User user){
+  public void deleteTalent(Long id, User user){
     talentService.deleteTalent(id, user);
-    return ResponseEntity.ok("success");
   }
 }

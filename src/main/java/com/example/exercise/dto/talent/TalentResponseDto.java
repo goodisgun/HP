@@ -1,6 +1,8 @@
 package com.example.exercise.dto.talent;
 
 import com.example.exercise.entity.Talent;
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -13,7 +15,7 @@ public class TalentResponseDto {
   private String title;
   private String content;
   private String image;
-//  private List<TalentCommentResponseDto> comments;
+  private List<TalentCommentResponseDto> comments;
 
 
   public TalentResponseDto(Talent talent) {
@@ -22,5 +24,7 @@ public class TalentResponseDto {
     this.title = talent.getTitle();
     this.content = talent.getContent();
     this.image = talent.getImage();
+    this.comments = talent.getComments().stream().map(TalentCommentResponseDto::new).collect(
+        Collectors.toList());
   }
 }

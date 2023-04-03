@@ -1,6 +1,7 @@
 package com.example.exercise.entity;
 
 
+import com.example.exercise.dto.talent.TalentCommentRequestDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,6 +31,16 @@ public class TalentComment extends TimeStamped{
 
   @Column(nullable = false)
   private String content;
+
+  public TalentComment(User user, Talent talent, TalentCommentRequestDto requestDto) {
+    this.user = user;
+    this.talent = talent;
+    this.content = requestDto.getContent();
+  }
+
+  public void updateTalentComment(String content){
+    this.content = content;
+  }
 
 
 
