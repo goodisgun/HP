@@ -40,18 +40,16 @@ public class Gathering extends TimeStamped {
   @OneToMany(mappedBy = "gathering", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<GatheringComment> comments = new ArrayList<>();
 
+
   public Gathering(String title, String content, String image) {
     this.title = title;
     this.content = content;
     this.image = image;
-//    this.gatheringTime;
-//    this.memberNum;
   }
 
   public void update(GatheringUpdateRequestDto updateRequestDto) {
     this.title = updateRequestDto.getTitle();
     this.content = updateRequestDto.getContent();
     this.image = updateRequestDto.getImage();
-//    this.gatheringTime = updateRequestDto.getGatheringTime;
     }
 }

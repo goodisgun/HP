@@ -21,7 +21,7 @@ public interface TalentService {
   List<AllTalentResponseDto> getAllTalent();
 
   //updateTalent (게시글 수정)
-  TalentUpdateResponseDto updatePost(Long talentId, TalentUpdateRequestDto requestDto, User user);
+  TalentUpdateResponseDto updateTalent(Long talentId, TalentUpdateRequestDto requestDto, User user);
 
   //deletePost (게시글 삭제)
   String deleteTalent(Long talentId, User user);
