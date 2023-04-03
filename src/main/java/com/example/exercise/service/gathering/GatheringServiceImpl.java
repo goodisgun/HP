@@ -22,11 +22,12 @@ public class GatheringServiceImpl implements GatheringService{
 
     //모임 게시글 작성
     @Override
-    public GatheringResponseDto createGathering(GatheringRequestDto requestDto) {
-        Gathering gathering = new Gathering(requestDto.getTitle(),requestDto.getContent(), requestDto.getImage());
+    public GatheringResponseDto createGathering(GatheringRequestDto requestDto, User user) {
+        Gathering gathering = new Gathering(requestDto.getTitle(), requestDto.getContent(), requestDto.getImage(), requestDto.getMaxEnrollmentCount(),requestDto.getGatheringTime());
         gatheringRepository.save(gathering);
-
-        return new GatheringResponseDto(gathering);
+        gathering.setMaxEnrollmentCount(requestDto.getMaxEnrollmentCount());
+        int maxEnrollmentCount = gathering.getMaxEnrollmentCount();
+        return new GatheringResponseDto(gathering, maxEnrollmentCount);
     }
 
     //모임 게시글 전체 조회
@@ -45,19 +46,20 @@ public class GatheringServiceImpl implements GatheringService{
     @Override
     @Transactional(readOnly = true)
     public GatheringResponseDto getGathering(Long gatheringId) {
-        Gathering gatherings = findGathering(gatheringId);
-        return new GatheringResponseDto(gatherings);
+        Gathering gathering = findGathering(gatheringId);
+        int maxEnrollmentCount = gathering.getMaxEnrollmentCount();
+        return new GatheringResponseDto(gathering, maxEnrollmentCount);
     }
-
 
     //모임 게시글 수정
     @Override
     public GatheringResponseDto updateGathering(Long gatheringId, User user, GatheringUpdateRequestDto updateRequestDto) {
         Gathering gathering = findGathering(gatheringId);
         validateUser(gathering, user);
-        gathering.update(updateRequestDto);
+        int maxEnrollmentCount = gathering.getMaxEnrollmentCount();
+        gathering.update(updateRequestDto,maxEnrollmentCount);
 
-        return new GatheringResponseDto(gathering);
+        return new GatheringResponseDto(gathering, maxEnrollmentCount);
     }
 
     //모임 게시글 삭제

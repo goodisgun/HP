@@ -1,5 +1,7 @@
 package com.example.exercise.controller;
 
+import com.example.exercise.dto.gathering.GatheringCommentRequestDto;
+import com.example.exercise.dto.gathering.GatheringCommentResponseDto;
 import com.example.exercise.entity.User;
 import com.example.exercise.service.gathering.GatheringCommentServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -15,8 +17,8 @@ public class GatheringCommentController {
     private final GatheringCommentServiceImpl gatheringCommentService;
     //댓글 작성
     @PostMapping
-    public ResponseEntity<GatheringCommentResponse> createGatheringComment(@PathVariable Long gatheringId, User user, @RequestBody GatheringCommentRequestDto commentRequestDto){
-        return ResponseEntity.status(HttpStatus.CREATED).body(gatheringCommentService.createGatheringComment(gatheringId, user, commentRequestDto));
+    public ResponseEntity<GatheringCommentResponseDto> createGatheringComment(@PathVariable Long gatheringId, User user, @RequestBody GatheringCommentRequestDto commentRequestDto){
+        return ResponseEntity.status(HttpStatus.CREATED).body(gatheringCommentService.createGatheringComment(gatheringId,user, commentRequestDto));
     }
 
     //댓글 수정

@@ -23,8 +23,8 @@ public class GatheringController {
 
     //모임 게시글 작성
     @PostMapping
-    public ResponseEntity<GatheringResponseDto> createGathering(@RequestBody GatheringRequestDto requestDto){
-        return ResponseEntity.status(HttpStatus.CREATED).body(gatheringService.createGathering(requestDto));
+    public ResponseEntity<GatheringResponseDto> createGathering(@RequestBody GatheringRequestDto requestDto, User user){
+        return ResponseEntity.status(HttpStatus.CREATED).body(gatheringService.createGathering(requestDto,user));
     }
 
     //모임 게시글 수정

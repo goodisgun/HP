@@ -1,11 +1,9 @@
 package com.example.exercise.dto.gathering;
 
 import com.example.exercise.entity.Gathering;
-import com.example.exercise.entity.GatheringComment;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,11 +16,12 @@ public class GatheringResponseDto {
     private String title;
     private String image;
     private String content;
-    private int memberNum;
+    private int maxEnrollmentCount; //모집인원
+    private String gatheringTime;
     private List<GatheringCommentResponseDto> comments;
 
 
-    public GatheringResponseDto(Gathering gathering) {
+    public GatheringResponseDto(Gathering gathering, int maxEnrollmentCount) {
         this.nickname = gathering.getUser().getNickname();
         this.title = gathering.getTitle();
         this.image = gathering.getImage();
@@ -30,5 +29,7 @@ public class GatheringResponseDto {
         this.comments = gathering.getComments().stream()
                 .map(GatheringCommentResponseDto::new)
                 .collect(Collectors.toList());
+        this.maxEnrollmentCount = maxEnrollmentCount;
+        this.gatheringTime = gathering.getGatheringTime();
     }
 }

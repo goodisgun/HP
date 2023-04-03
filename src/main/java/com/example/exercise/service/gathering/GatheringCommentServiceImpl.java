@@ -16,7 +16,7 @@ public class GatheringCommentServiceImpl implements GatheringCommentService {
 
     //댓글 작성
     @Override
-    public GatheringCommentResponseDto createGatheringComment(Long gatheringId, GatheringCommentRequestDto commentRequestDto) {
+    public GatheringCommentResponseDto createGatheringComment(Long gatheringId,User user, GatheringCommentRequestDto commentRequestDto) {
       GatheringComment gatheringComment = new GatheringComment(commentRequestDto.getContent());
       gatheringCommentRepository.save(gatheringComment);
 
