@@ -29,6 +29,7 @@ public class TalentCommentServiceImpl implements TalentCommentService {
   @Override
   public ResponseEntity<Void> createTalentComment(Long talentId, User user,
       TalentCommentRequestDto talentCommentRequestDto) {
+
     Talent talent = _getTalent(talentId);
     user = _getUser(user.getUsername());
 
@@ -42,28 +43,27 @@ public class TalentCommentServiceImpl implements TalentCommentService {
   @Override
   public ResponseEntity<Void> updateTalentComment(Long talentCommentId, User user,
       TalentCommentRequestDto talentCommentRequestDto) {
-    TalentComment talentComment = _getTalentComment(talentCommentId);
 
+    TalentComment talentComment = _getTalentComment(talentCommentId);
     user = _getUser(user.getUsername());
 
-    if (!talentComment.getUser().equals(user)) {
-      if (user.getUserRole() != UserRoleEnum.ADMIN) {
-        throw new AccessDeniedException("작성자만 댓글 수정이 가능합니다.");
-      }
+    if (!talentComment.getUser().equals(user) && user.getUserRole() != UserRoleEnum.ADMIN) {
+      throw new AccessDeniedException("작성자만 댓글 수정이 가능합니다.");
     }
+
     talentComment.updateTalentComment(talentCommentRequestDto.getContent());
     talentCommentRepository.save(talentComment);
-
     return ResponseEntity.ok().build();
   }
 
   @Override
   public void deleteComment(Long talentCommentId, User user) {
+
     TalentComment talentComment = _getTalentComment(talentCommentId);
     user = _getUser(user.getUsername());
 
     if (!talentComment.getUser().equals(user) && user.getUserRole() != UserRoleEnum.ADMIN) {
-      throw new IllegalArgumentException("작성자만 댓글 삭제가 가능합니다.");
+      throw new AccessDeniedException("작성자만 댓글 삭제가 가능합니다.");
     }
 
     talentCommentRepository.delete(talentComment);
