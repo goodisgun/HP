@@ -52,7 +52,7 @@ public class User {
   private final List <TalentComment> comments = new ArrayList<>();
 
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-  private final List<TalentRecomment> reComments = new ArrayList<>();
+  private final List<TalentReComment> reComments = new ArrayList<>();
 
   public User(Long id, String username, String password, String nickname, String email,
       String phoneNumber,UserRoleEnum userRole) {

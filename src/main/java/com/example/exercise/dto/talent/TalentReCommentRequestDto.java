@@ -5,11 +5,11 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class TalentCommentRequestDto {
+public class TalentReCommentRequestDto {
 
   private String content;
 
-  public TalentCommentRequestDto build(){
-    return new TalentCommentRequestDto(content);
+  public TalentReCommentRequestDto build() {
+    return new TalentReCommentRequestDto(content);
   }
 }
