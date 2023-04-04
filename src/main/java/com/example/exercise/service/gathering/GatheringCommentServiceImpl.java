@@ -34,11 +34,10 @@ public class GatheringCommentServiceImpl implements GatheringCommentService {
 
     //댓글 삭제
     @Override
-    public String deleteGatheringComment(Long gatheringCommentId, User user) {
+    public void deleteGatheringComment(Long gatheringCommentId, User user) {
         GatheringComment gatheringComment = findGatheringComment(gatheringCommentId);
         validateUser(gatheringComment, user);
         gatheringCommentRepository.delete(gatheringComment);
-        return "SUCCESS";
     }
 
     //중복 코드_존재여부
