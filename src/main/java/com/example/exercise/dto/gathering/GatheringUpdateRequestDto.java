@@ -12,4 +12,5 @@ public class GatheringUpdateRequestDto {
     private String content;
     private String image;
     private String gatheringTime;
+    private int maxEnrollmentCount;
 }

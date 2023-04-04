@@ -31,7 +31,6 @@ public class GatheringComment extends TimeStamped{
 
     }
 
-
     public void update(GatheringCommentRequestDto commentRequestDto) {
         this.content = commentRequestDto.getContent();
     }

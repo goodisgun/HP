@@ -12,7 +12,7 @@ import java.util.List;
 public interface GatheringService {
 
     // 게시글 작성
-    GatheringResponseDto createGathering(GatheringRequestDto requestDto);
+    GatheringResponseDto createGathering(GatheringRequestDto requestDto, User user);
     // 게시글 전체 조회
     List<AllGatheringResponseDto> getAllGathering();
 

@@ -36,6 +36,9 @@ public class User {
   private String email;
 
   @Column(nullable = false)
+  private String phoneNumber;
+
+  @Column(nullable = false)
   @Enumerated(value = EnumType.STRING)
   private UserRoleEnum userRole;
 
@@ -52,12 +55,13 @@ public class User {
   private final List<TalentRecomment> reComments = new ArrayList<>();
 
   public User(Long id, String username, String password, String nickname, String email,
-      UserRoleEnum userRole) {
+      String phoneNumber,UserRoleEnum userRole) {
     this.id = id;
     this.username = username;
     this.password = password;
     this.nickname = nickname;
     this.email = email;
+    this.phoneNumber =phoneNumber;
     this.userRole = userRole;
   }
 }

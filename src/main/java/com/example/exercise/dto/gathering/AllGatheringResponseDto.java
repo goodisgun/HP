@@ -11,10 +11,11 @@ public class AllGatheringResponseDto {
     private String nickname;
     private String title;
     private String gatheringTime;
-    private int memberNum;
+    private int  maxEnrollmentCount;
 
     public AllGatheringResponseDto(Gathering gathering) {
         this.nickname = gathering.getUser().getNickname();
         this.title = gathering.getTitle();
+        this.maxEnrollmentCount = getMaxEnrollmentCount();
     }
 }
