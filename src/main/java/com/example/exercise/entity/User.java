@@ -1,5 +1,6 @@
 package com.example.exercise.entity;
 
+import com.example.exercise.dto.user.ProfileUpdateDto;
 import com.example.exercise.entity.enums.UserRoleEnum;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -32,11 +33,11 @@ public class User {
   @Column(nullable = false, unique = true)
   private String nickname;
 
-  @Column(nullable = false)
-  private String email;
+  @Column
+  private String image;
 
-  @Column(nullable = false)
-  private String phoneNumber;
+  @Column
+  private String introduction;
 
   @Column(nullable = false)
   @Enumerated(value = EnumType.STRING)
@@ -54,11 +55,17 @@ public class User {
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
   private final List<TalentReComment> reComments = new ArrayList<>();
 
-  public User(Long id, String username, String password, String nickname,UserRoleEnum userRole) {
-    this.id = id;
+  public User(String username, String password, String nickname, String image, UserRoleEnum userRole) {
     this.username = username;
     this.password = password;
     this.nickname = nickname;
+    this.image = image;
     this.userRole = userRole;
+  }
+
+  public void updateProfile(ProfileUpdateDto profileUpdateDto){
+    this.nickname = (profileUpdateDto.getNickname().equals("")) ? this.nickname : profileUpdateDto.getNickname();
+    this.introduction = (profileUpdateDto.getIntroduction().equals("")) ? this.introduction : profileUpdateDto.getIntroduction();
+    this.image = (profileUpdateDto.getImage().equals("")) ? this.image : profileUpdateDto.getImage();
   }
 }
