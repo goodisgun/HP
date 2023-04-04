@@ -13,6 +13,6 @@ public interface GatheringCommentService {
     GatheringCommentResponseDto updateGatheringComment(Long gatheringCommentId, User user, GatheringCommentRequestDto commentRequestDto);
 
     //댓글 삭제
-    String deleteGatheringComment(Long gatheringCommentId, User user);
+    void deleteGatheringComment(Long gatheringCommentId, User user);
 
 }

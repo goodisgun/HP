@@ -32,10 +32,6 @@ public class EnrollmentServiceImpl implements EnrollmentService {
         User validateUser = userRepository.findById(user.getId())
                 .orElseThrow(() -> new IllegalArgumentException("사용자가 존재하지 않습니다."));
 
-        String phoneNumber = validateUser.getPhoneNumber();
-        if (phoneNumber == null || !Pattern.matches("^01(?:0|1|[6-9])-(?:\\d{3}|\\d{4})-\\d{4}$", phoneNumber)) {
-            throw new IllegalArgumentException("핸드폰 번호를 올바르게 입력해 주세요.");
-        }
         Optional<Enrollment> enrollment = enrollmentRepository.findByGatheringIdAndUserId(gatheringId, user.getId());
         enrollment.ifPresentOrElse(enrollmentRepository::delete, () -> {
             if (gathering.getCurrentEnrollmentCount() >= gathering.getMaxEnrollmentCount()) {
@@ -46,7 +42,6 @@ public class EnrollmentServiceImpl implements EnrollmentService {
                     .user(validateUser)
                     .gathering(gathering)
                     .nickname(validateUser.getNickname())
-                    .phoneNumber(phoneNumber)
                     .build();
             enrollmentRepository.save(newEnrollment);
 

@@ -54,14 +54,11 @@ public class User {
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
   private final List<TalentReComment> reComments = new ArrayList<>();
 
-  public User(Long id, String username, String password, String nickname, String email,
-      String phoneNumber,UserRoleEnum userRole) {
+  public User(Long id, String username, String password, String nickname,UserRoleEnum userRole) {
     this.id = id;
     this.username = username;
     this.password = password;
     this.nickname = nickname;
-    this.email = email;
-    this.phoneNumber =phoneNumber;
     this.userRole = userRole;
   }
 }

@@ -22,13 +22,13 @@ public class GatheringCommentController {
     }
 
     //댓글 수정
-    @PatchMapping("/{commentId}")
+    @PatchMapping("/{gatheringCommentId}")
     public ResponseEntity<GatheringCommentResponseDto> updateGatheringComment(@PathVariable Long gatheringCommentId, User user,@RequestBody GatheringCommentRequestDto commentRequestDto){
         return ResponseEntity.status(HttpStatus.OK).body(gatheringCommentService.updateGatheringComment(gatheringCommentId,user,commentRequestDto));
     }
 
     //댓글 삭제
-    @DeleteMapping("/{commentId}")
+    @DeleteMapping("/{gatheringCommentId}")
     public void deleteGatheringComment(@PathVariable Long gatheringCommentId, User user){
         gatheringCommentService.deleteGatheringComment(gatheringCommentId,user);
     }
