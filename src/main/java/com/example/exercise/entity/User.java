@@ -55,7 +55,8 @@ public class User {
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
   private final List<TalentReComment> reComments = new ArrayList<>();
 
-  public User(String username, String password, String nickname, String image, UserRoleEnum userRole) {
+  public User(Long id, String username, String password, String nickname, String image, UserRoleEnum userRole) {
+    this.id = id;
     this.username = username;
     this.password = password;
     this.nickname = nickname;
@@ -63,9 +64,21 @@ public class User {
     this.userRole = userRole;
   }
 
+  public User(String username, String password, String nickname, String image, UserRoleEnum user) {
+    this.username = username;
+    this.password = password;
+    this.nickname = nickname;
+    this.image = image;
+    this.userRole = user;
+  }
+
   public void updateProfile(ProfileUpdateDto profileUpdateDto){
     this.nickname = (profileUpdateDto.getNickname().equals("")) ? this.nickname : profileUpdateDto.getNickname();
     this.introduction = (profileUpdateDto.getIntroduction().equals("")) ? this.introduction : profileUpdateDto.getIntroduction();
     this.image = (profileUpdateDto.getImage().equals("")) ? this.image : profileUpdateDto.getImage();
+  }
+
+  public UserRoleEnum getRole() {
+    return this.userRole;
   }
 }
