@@ -13,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -55,6 +56,7 @@ public class User {
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
   private final List<TalentReComment> reComments = new ArrayList<>();
 
+  @Builder
   public User(Long id, String username, String password, String nickname, String image, UserRoleEnum userRole) {
     this.id = id;
     this.username = username;
