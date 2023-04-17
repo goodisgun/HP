@@ -3,11 +3,13 @@ package com.example.exercise.dto.talent;
 import com.example.exercise.entity.Talent;
 import java.util.List;
 import java.util.stream.Collectors;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
 @Getter
 @Builder
+@AllArgsConstructor
 public class TalentResponseDto {
 
   private Long id;

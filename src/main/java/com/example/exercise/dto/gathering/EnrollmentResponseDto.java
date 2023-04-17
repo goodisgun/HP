@@ -1,11 +1,13 @@
 package com.example.exercise.dto.gathering;
 
 import com.example.exercise.entity.Enrollment;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
 @Getter
 @Builder
+@AllArgsConstructor
 public class EnrollmentResponseDto {
 
     private Long id; //참여신청 아이디(pk)
