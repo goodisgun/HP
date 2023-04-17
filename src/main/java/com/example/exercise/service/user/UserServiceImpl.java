@@ -13,6 +13,7 @@ import com.example.exercise.entity.SignoutAccessToken;
 import com.example.exercise.entity.User;
 import com.example.exercise.entity.enums.UserRoleEnum;
 import com.example.exercise.jwt.JwtUtil;
+import com.example.exercise.redis.CacheKey;
 import com.example.exercise.repository.RefreshTokenRedisRepository;
 import com.example.exercise.repository.SignoutAccessTokenRedisRepository;
 import com.example.exercise.repository.UserRepository;
@@ -92,7 +93,7 @@ public class UserServiceImpl implements UserService {
     //로그아웃
     @Override
     @Transactional
-    @CacheEvict(value = CacheKey.USER, key = "#user.getUsername()")
+    @CacheEvict(value = CacheKey.USER, key = "#username")
     public String signout(HttpServletRequest request, String username) {
         String accessToken = jwtUtil.resolveToken(request);
         long remainMilliSeconds = jwtUtil.getRemainMilliSeconds(accessToken);

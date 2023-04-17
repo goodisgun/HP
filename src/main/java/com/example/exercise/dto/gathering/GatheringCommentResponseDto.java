@@ -1,11 +1,13 @@
 package com.example.exercise.dto.gathering;
 
 import com.example.exercise.entity.GatheringComment;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
 @Getter
 @Builder
+@AllArgsConstructor
 public class GatheringCommentResponseDto {
 
     private Long Id;

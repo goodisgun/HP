@@ -51,6 +51,16 @@ public class Talent extends TimeStamped{
     this.user = user;
   }
 
+  @Builder
+  public Talent(Long id, User user, String title, String content, String image, List<TalentComment> comments) {
+    this.id = id;
+    this.user = user;
+    this.title = title;
+    this.content = content;
+    this.image = image;
+    this.comments = comments;
+  }
+
   public void updateTalent(TalentUpdateRequestDto requestDto){
     if (requestDto.getTitle() != null && !requestDto.getTitle().isEmpty()) {
       this.title = requestDto.getTitle();
