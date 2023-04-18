@@ -1,6 +1,5 @@
 package com.example.exercise.controller;
 import com.example.exercise.dto.user.*;
-import com.example.exercise.entity.User;
 import com.example.exercise.security.UserDetailsImpl;
 import com.example.exercise.service.user.UserService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,8 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.nio.charset.Charset;
-import java.time.Duration;
 
 @RestController
 @RequiredArgsConstructor
@@ -54,21 +51,25 @@ public ResponseEntity<String> signout(HttpServletRequest request, @Authenticatio
   return ResponseEntity.status(HttpStatus.OK).body(userService.signout(request,userDetails.getUsername()));
 }
 
+  // 프로필 수정
   @PatchMapping("/profiles")
   public ResponseEntity<Void> updateProfile(@RequestBody ProfileUpdateDto updateDto, @AuthenticationPrincipal UserDetailsImpl userDetails){
     return userService.updateProfile(updateDto, userDetails.getUser());
   }
 
+  //프로필 조회
   @GetMapping("/profiles/{userId}")
   public ResponseEntity<ProfileResponseDto> getProfile(Long userId){
     return userService.getProfile(userId);
   }
 
+  //아이디 중복 체크
   @PostMapping("/check-username")
   public ResponseEntity<String> ck_id(@RequestBody UserUsernameDto userUsernameDto) {
     return userService.ck_username(userUsernameDto);
   }
 
+  //닉네임 중복 검증
   @PostMapping("/check-nickname")
   public ResponseEntity<String> ck_nickname(@RequestBody UserNicknameDto userNicknameDto) {
     return userService.ck_nickname(userNicknameDto);

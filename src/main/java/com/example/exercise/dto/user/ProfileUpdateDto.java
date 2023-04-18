@@ -11,7 +11,4 @@ public class ProfileUpdateDto {
   private String introduction;
   private String image;
 
-  public ProfileUpdateDto build(){
-    return new ProfileUpdateDto(nickname, introduction, image);
-  }
 }
