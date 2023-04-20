@@ -1,6 +1,8 @@
 package com.example.exercise.entity;
 
+import com.example.exercise.dto.gathering.GatheringRequestDto;
 import com.example.exercise.dto.gathering.GatheringUpdateRequestDto;
+import com.example.exercise.dto.talent.TalentRequestDto;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,6 +14,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
+
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -73,4 +77,17 @@ public class Gathering extends TimeStamped {
   public void setMaxEnrollmentCount(int maxEnrollmentCount) {
     this.maxEnrollmentCount = maxEnrollmentCount;
   }
+
+  @Builder
+  public Gathering (GatheringRequestDto requestDto){
+    this.title = requestDto.getTitle();
+    this.content = requestDto.getContent();
+    this.image = requestDto.getImage();
+    this.gatheringTime = requestDto.getGatheringTime();
+    this.maxEnrollmentCount = requestDto.getMaxEnrollmentCount();
+
+  }
+
 }
+
+
