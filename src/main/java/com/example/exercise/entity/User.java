@@ -74,7 +74,14 @@ public class User {
     this.userRole = user;
   }
 
-  public void updateProfile(ProfileUpdateDto profileUpdateDto){
+    public User(String username, String encode, UserRoleEnum user) {
+    this.username = username;
+    this.password = encode;
+    this.userRole = user;
+
+    }
+
+    public void updateProfile(ProfileUpdateDto profileUpdateDto){
     this.nickname = (profileUpdateDto.getNickname().equals("")) ? this.nickname : profileUpdateDto.getNickname();
     this.introduction = (profileUpdateDto.getIntroduction().equals("")) ? this.introduction : profileUpdateDto.getIntroduction();
     this.image = (profileUpdateDto.getImage().equals("")) ? this.image : profileUpdateDto.getImage();

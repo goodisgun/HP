@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
         return ResponseEntity.ok().build();
     }
 
-    //관리자 회원가입
+    //관리자 회원가입저
     @Override
     public ResponseEntity<String> signupAdmin(AdminSignupRequestDto adminsignupRequestDto) {
         String password = passwordEncoder.encode(adminsignupRequestDto.getPassword());
