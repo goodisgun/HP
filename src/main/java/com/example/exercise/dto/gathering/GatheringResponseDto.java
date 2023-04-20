@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class GatheringResponseDto {
 
-    private Long Id;
+    private Long id;
     private String nickname;
     private String title;
     private String image;
